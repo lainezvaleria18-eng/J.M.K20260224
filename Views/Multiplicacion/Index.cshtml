@@ -1,22 +1,80 @@
 ﻿@model J.M.K20260224.Models.Operacion
 
-<h2>Multiplicación</h2>
-
-<form asp-action="Calcular" method="post">
-    <div>
-        <label>Número 1</label>
-        <input asp-for="Numero1" />
-    </div>
-
-    <div>
-        <label>Número 2</label>
-        <input asp-for="Numero2" />
-    </div>
-
-    <button type="submit">Multiplicar</button>
-</form>
-
-@if (Model != null)
-{
-    <h3>Resultado: @Model.Resultado</h3>
+@{
+    ViewData["Title"] = "Multiplicación";
 }
+
+<style>
+    .calculadora-container {
+        max-width: 450px;
+        margin: 80px auto;
+        padding: 40px;
+        background-color: #f4f6f9;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .calculadora-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .input-numero {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .btn-calcular {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        background-color: #2e7d32;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .btn-calcular:hover {
+        background-color: #1b5e20;
+    }
+
+    .resultado-box {
+        margin-top: 25px;
+        padding: 15px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        border: 1px solid #ddd;
+    }
+</style>
+
+<div class="calculadora-container">
+    <h2>Multiplicación</h2>
+
+    <form asp-action="Calcular" method="post">
+        <input asp-for="Numero1" type="number" step="any" class="input-numero" placeholder="Ingrese el primer número" required />
+        <input asp-for="Numero2" type="number" step="any" class="input-numero" placeholder="Ingrese el segundo número" required />
+
+        <button type="submit" class="btn-calcular">
+            Multiplicar
+        </button>
+    </form>
+
+    @if (Model != null)
+    {
+        <div class="resultado-box">
+            Resultado: @Model.Resultado
+        </div>
+    }
+</div>
