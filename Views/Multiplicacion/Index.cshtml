@@ -1,0 +1,22 @@
+﻿@model J.M.K20260224.Models.Operacion
+
+<h2>Multiplicación</h2>
+
+<form asp-action="Calcular" method="post">
+    <div>
+        <label>Número 1</label>
+        <input asp-for="Numero1" />
+    </div>
+
+    <div>
+        <label>Número 2</label>
+        <input asp-for="Numero2" />
+    </div>
+
+    <button type="submit">Multiplicar</button>
+</form>
+
+@if (Model != null)
+{
+    <h3>Resultado: @Model.Resultado</h3>
+}
