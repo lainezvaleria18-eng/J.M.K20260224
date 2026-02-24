@@ -15,6 +15,7 @@ namespace J.M.K20260224.Controllers
             double resultado = numero1 - numero2;
             ViewBag.Resultado = resultado;
             return View("Index");
+
         }
     }
 }
