@@ -3,7 +3,7 @@ using J.M.K20260224.Models;
 
 namespace J.M.K20260224.Controllers
 {
-    public class SumaController : Controller
+    public class DivisionController : Controller
     {
         public IActionResult Index()
         {
@@ -13,7 +13,16 @@ namespace J.M.K20260224.Controllers
         [HttpPost]
         public IActionResult Calcular(Operacion op)
         {
-            op.Resultado = op.Numero1 + op.Numero2;
+            if (op.Numero2 == 0)
+            {
+                op.Resultado = 0;
+                ViewBag.Error = "No se puede dividir entre cero";
+            }
+            else
+            {
+                op.Resultado = op.Numero1 / op.Numero2;
+            }
+
             return View("Index", op);
         }
     }

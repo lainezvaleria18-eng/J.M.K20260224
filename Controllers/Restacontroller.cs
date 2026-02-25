@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using J.M.K20260224.Models;
 
 namespace J.M.K20260224.Controllers
 {
@@ -6,16 +7,14 @@ namespace J.M.K20260224.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new Operacion());
         }
 
         [HttpPost]
-        public IActionResult Calcular(double numero1, double numero2)
+        public IActionResult Calcular(Operacion op)
         {
-            double resultado = numero1 - numero2;
-            ViewBag.Resultado = resultado;
-            return View("Index");
-
+            op.Resultado = op.Numero1 - op.Numero2;
+            return View("Index", op);
         }
     }
 }

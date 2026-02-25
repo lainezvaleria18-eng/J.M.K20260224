@@ -1,7 +1,7 @@
 ﻿@model J.M.K20260224.Models.Operacion
 
 @{
-    ViewData["Title"] = "Multiplicación";
+    ViewData["Title"] = "Multiplicacion";
 }
 
 <style>
@@ -14,12 +14,12 @@
         box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
-    .calculadora-container h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        font-weight: 600;
-        color: #333;
-    }
+        .calculadora-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #333;
+        }
 
     .input-numero {
         width: 100%;
@@ -43,9 +43,9 @@
         transition: 0.3s;
     }
 
-    .btn-calcular:hover {
-        background-color: #1b5e20;
-    }
+        .btn-calcular:hover {
+            background-color: #1b5e20;
+        }
 
     .resultado-box {
         margin-top: 25px;
@@ -60,18 +60,17 @@
 </style>
 
 <div class="calculadora-container">
-    <h2>Multiplicación</h2>
+    <h2>Multiplicacion</h2>
 
     <form asp-action="Calcular" method="post">
-        <input asp-for="Numero1" type="number" step="any" class="input-numero" placeholder="Ingrese el primer número" required />
-        <input asp-for="Numero2" type="number" step="any" class="input-numero" placeholder="Ingrese el segundo número" required />
-
+        <input asp-for="Numero1" type="number" step="any" class="input-numero" placeholder="Ingrese el primer numero" required />
+        <input asp-for="Numero2" type="number" step="any" class="input-numero" placeholder="Ingrese el segundo numero" required />
         <button type="submit" class="btn-calcular">
             Multiplicar
         </button>
     </form>
 
-    @if (Model != null)
+    @if (Model != null && Model.Numero1 != 0 || Model.Numero2 != 0)
     {
         <div class="resultado-box">
             Resultado: @Model.Resultado

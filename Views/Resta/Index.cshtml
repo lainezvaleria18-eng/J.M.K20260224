@@ -1,4 +1,6 @@
-﻿@{
+﻿@model J.M.K20260224.Models.Operacion
+
+@{
     ViewData["Title"] = "Resta";
 }
 
@@ -23,16 +25,17 @@
         margin-bottom: 25px;
     }
 
-    input {
+    .input-numero {
         width: 80%;
         padding: 10px;
         margin: 10px 0;
         border-radius: 8px;
         border: 1px solid #ccc;
         font-size: 16px;
+        text-align: center;
     }
 
-    button {
+    .btn-calcular {
         background: #667eea;
         color: white;
         border: none;
@@ -44,9 +47,9 @@
         transition: 0.3s;
     }
 
-    button:hover {
-        background: #764ba2;
-    }
+        .btn-calcular:hover {
+            background: #764ba2;
+        }
 
     .resultado {
         margin-top: 20px;
@@ -60,16 +63,16 @@
     <h2>Calculadora - Resta</h2>
 
     <form asp-action="Calcular" method="post">
-        <input type="number" name="numero1" placeholder="Primer número" required />
-        <input type="number" name="numero2" placeholder="Segundo número" required />
+        <input asp-for="Numero1" type="number" step="any" class="input-numero" placeholder="Primer numero" required />
+        <input asp-for="Numero2" type="number" step="any" class="input-numero" placeholder="Segundo numero" required />
         <br />
-        <button type="submit">Restar</button>
+        <button type="submit" class="btn-calcular">Restar</button>
     </form>
 
-    @if (ViewBag.Resultado != null)
+    @if (Model?.Numero1 != null && Model?.Numero2 != null)
     {
         <div class="resultado">
-            Resultado: @ViewBag.Resultado
+            Resultado: @Model.Resultado
         </div>
     }
 </div>

@@ -1,0 +1,102 @@
+﻿@model J.M.K20260224.Models.Operacion
+
+@{
+    ViewData["Title"] = "Division";
+}
+
+<style>
+    body {
+        background-color: #111827;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+    }
+
+    .division-box {
+        width: 450px;
+        margin: 100px auto;
+        padding: 40px;
+        background-color: #1f2937;
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        text-align: center;
+    }
+
+        .division-box h2 {
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #60a5fa;
+        }
+
+    .input-style {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        border: none;
+        font-size: 15px;
+        text-align: center;
+        background-color: #374151;
+        color: white;
+    }
+
+        .input-style:focus {
+            outline: 2px solid #60a5fa;
+        }
+
+    .btn-dividir {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        background-color: #2563eb;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-dividir:hover {
+            background-color: #1d4ed8;
+        }
+
+    .resultado {
+        margin-top: 20px;
+        padding: 12px;
+        background-color: #0f172a;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #22c55e;
+    }
+
+    .error {
+        margin-top: 15px;
+        color: #ef4444;
+        font-weight: bold;
+    }
+</style>
+
+<div class="division-box">
+    <h2>Calculadora - Division</h2>
+
+    <form asp-action="Calcular" method="post">
+        <input asp-for="Numero1" type="number" step="any" class="input-style" placeholder="Numero 1" required />
+        <input asp-for="Numero2" type="number" step="any" class="input-style" placeholder="Numero 2" required />
+        <button type="submit" class="btn-dividir">Dividir</button>
+    </form>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="error">
+            @ViewBag.Error
+        </div>
+    }
+
+    @if (Model != null && Model.Numero2 != 0)
+    {
+        <div class="resultado">
+            Resultado: @Model.Resultado
+        </div>
+    }
+</div>

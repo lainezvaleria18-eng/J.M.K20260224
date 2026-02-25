@@ -1,30 +1,101 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model J.M.K20260224.Models.Operacion
+
 @{
     ViewData["Title"] = "Suma";
 }
-<h2>Suma</h2>
 
-<form method="post">
-    <div>
-        <label>Numero 1</label>
-        <input type="number" name="numero1" step="any" required />
-    </div>
+<style>
+    body {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-    <br />
+    .container-suma {
+        width: 420px;
+        margin: 100px auto;
+        padding: 35px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        text-align: center;
+    }
 
-    <div>
-        <label>Numero 2</label>
-        <input type="number" name="numero2" step="any" required />
-    </div>
+    .titulo {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #2a5298;
+    }
 
-    <br />
+    .campo {
+        position: relative;
+        margin-bottom: 20px;
+    }
 
-    <button type="submit">Sumar</button>
-</form>
+        .campo input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #2a5298;
+            outline: none;
+            font-size: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
 
-@if (ViewBag.Resultado != null)
-{
-        <h3>Resultado: @ViewBag.Resultado</h3>
-}
+            .campo input:focus {
+                border-color: #1e3c72;
+                box-shadow: 0 0 8px rgba(30,60,114,0.4);
+            }
+
+    .btn-sumar {
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: none;
+        background: linear-gradient(135deg, #2a5298, #1e3c72);
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-sumar:hover {
+            transform: scale(1.05);
+        }
+
+    .resultado-box {
+        margin-top: 25px;
+        padding: 15px;
+        border-radius: 12px;
+        background-color: #f1f5ff;
+        font-size: 18px;
+        font-weight: bold;
+        color: #1e3c72;
+        border: 2px solid #2a5298;
+    }
+</style>
+
+<div class="container-suma">
+    <div class="titulo">Calculadora - Suma</div>
+
+    <form asp-action="Calcular" method="post">
+        <div class="campo">
+            <input asp-for="Numero1" type="number" step="any" placeholder="Ingrese el primer numero" required />
+        </div>
+
+        <div class="campo">
+            <input asp-for="Numero2" type="number" step="any" placeholder="Ingrese el segundo numero" required />
+        </div>
+
+        <button type="submit" class="btn-sumar">Sumar</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <div class="resultado-box">
+            Resultado: @Model.Resultado
+        </div>
+    }
+</div>

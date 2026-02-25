@@ -7,7 +7,7 @@ namespace J.M.K20260224.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new Operacion());
         }
 
         [HttpPost]
